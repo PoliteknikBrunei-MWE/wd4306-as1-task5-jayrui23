@@ -18,8 +18,12 @@ export class PlaceDetailPage implements OnInit {
 
   onBookPlace() {
     //this.navCtrl.navigateBack('/places/tabs');
-    this.modalCtrl.create({
-      component: CreateBookingComponent,
-    });
+    this.modalCtrl
+      .create({
+        component: CreateBookingComponent,
+      })
+      .then((modalEl) => {
+        modalEl.present();
+      });
   }
 }
