@@ -17,6 +17,9 @@ export class PlaceDetailPage implements OnInit {
   ngOnInit() {}
 
   onBookPlace() {
-    this.navCtrl.navigateBack('/places/tabs');
+    //this.navCtrl.navigateBack('/places/tabs');
+    this.modalCtrl.create({
+      component: CreateBookingComponent,
+    });
   }
 }
