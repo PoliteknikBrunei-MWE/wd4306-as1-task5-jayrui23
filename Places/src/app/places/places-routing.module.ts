@@ -2,16 +2,30 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PlacesPage } from './places.page';
+import { OffersPage } from '../offers/offers.page';
 
 const routes: Routes = [
   {
-    path: '',
-    component: PlacesPage
+    path: 'tabs',
+    component: PlacesPage,
+    children: [
+      {
+        path: 'offers',
+        loadChildren: () =>
+          import('./offers/offers.module').then((m) => m.OffersPageModule),
+      },
+      {
+        path: '',
+        redirectTo: '/places/tabs/',
+        pathMatch: 'full',
+      },
+    ],
   },
   {
-    path: 'place-detail',
-    loadChildren: () => import('./place-detail/place-detail.module').then( m => m.PlaceDetailPageModule)
-  }
+    path: '',
+    redirectTo: '/places/tabs/',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
